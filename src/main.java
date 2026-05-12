@@ -4,6 +4,8 @@ public class main {
     public static void main( String[] args) {
         cabecalho.mostrar(args);
         ArrayList<Questao> questoes = new ArrayList<>();
+        int acertos = 0;
+        int totalQuestoes = 15;
 
         Questao q1 = new Questao();
         q1.pergunta = "Qual série da Netflix conta a história de jogadores em um jogo mortal com provas infantis?";
@@ -153,12 +155,20 @@ public class main {
         q15.opcaoD = "D) Riverdale";
         q15.opcaoE = "E) Gossip Girl";
         q15.correta = "C";
+        questoes.add(q15);
 
-        int acertos = 0;
         for (Questao q : questoes) {
             q.escrevaQuestao();
             String resposta = q.leiaResposta();
             if (q.isCorreta(resposta)) acertos++;
         }
+        int erros = totalQuestoes - acertos;
+        double porcentagemAcertos = (double)acertos / (double)totalQuestoes * 100.0;
+        System.out.println("===================================================");
+        System.out.println("        Parabéns você concluiu as perguntas!       ");
+        System.out.println("Total de acertos:" + acertos);
+        System.out.println("Total de erros:" + erros);
+        System.out.println("Total de acertos em porcentagem:" + porcentagemAcertos);
+        System.out.println("===================================================");
     }
-}
+    }
